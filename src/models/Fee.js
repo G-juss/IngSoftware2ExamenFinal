@@ -1,6 +1,6 @@
 import { Movement } from './Movement.js';
 
-export class Withdrawal extends Movement {
+export class Fee extends Movement {
   constructor(data) {
     super(data);
   }
@@ -10,14 +10,14 @@ export class Withdrawal extends Movement {
   }
 
   getColor() {
-    return '#ef4444';
+    return '#8b5cf6';
   }
 
   getIcon() {
-    return '↑';
+    return '💰';
   }
 
   getTypeName() {
-    return 'Retiro';
+    return 'Comisión';
   }
 }

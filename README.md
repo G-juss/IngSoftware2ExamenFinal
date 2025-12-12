@@ -1,16 +1,17 @@
-# React + Vite
+# Explicación Técnica
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Objetivo del proyecto
 
-Currently, two official plugins are available:
+Busca separar la creación de los movimientos financieros de la interfaz de usuario. Antes, la UI creaba directamente todos los movimientos, por lo que cuando se agregaba un nuevo tipo el código se volvía inestable (al intentar agregar dos movimientos nuevos me desconfiguraba la vista web). Ahora usando Factory Method, la UI solo pide a la fábrica que cree los movimientos y se concentra en mostrarlos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Qué se configuró
 
-## React Compiler
+ Ahora para agregar un nuevo tipo de movimiento, solo se crea la clase y se registra en la fábrica. La UI lo reconoce automáticamente sin tocar nada de su código, cumpliendo con el principio OCP.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Cambios
 
-## Expanding the ESLint configuration
+Esta refactorización reduce el acoplamiento porque la UI ya no depende de todas las clases concretas, solo de la fábrica y de la abstracción Movement. Ahora cada módulo tiene una única responsabilidad: la fábrica crea objetos, la UI los muestra y cada clase de movimiento maneja su lógica específica. 
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Cómo agregar un nuevo tipo
+
+Primero se crea una clase que extienda Movement y se implementa getNetAmount(), getColor() y getIcon(). Luego, se registra la clase en la fábrica con register('nombreTipo', ClaseNueva). Con esto, la UI reconocerá el nuevo movimiento automáticamente sin tener que modificar el código que se nos dió.

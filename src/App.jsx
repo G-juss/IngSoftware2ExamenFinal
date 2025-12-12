@@ -1,4 +1,4 @@
-import { MovementList } from './components';
+import { MovementList } from './components/index.js';
 import { movementsData } from './data/movements';
 import './App.css';
 

@@ -1,4 +1,4 @@
-import { Movement } from './Movement';
+import { Movement } from './Movement.js';
 
 export class Deposit extends Movement {
   constructor(data) {

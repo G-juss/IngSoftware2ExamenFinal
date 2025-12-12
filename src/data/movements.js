@@ -56,5 +56,19 @@ export const movementsData = [
     description: 'Retiro para gastos personales',
     amount: 100.00,
     date: '2025-12-08'
+  },
+  {
+    id: 9,
+    type: 'fee',
+    description: 'Comisión por mantenimiento de cuenta',
+    amount: 25.00,
+    date: '2025-12-09'
+  },
+  {
+    id: 10,
+    type: 'chargeback',
+    description: 'Contracargo de compra fraudulenta',
+    amount: 120.00,
+    date: '2025-12-10'
   }
 ];

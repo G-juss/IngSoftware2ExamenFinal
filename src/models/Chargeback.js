@@ -1,6 +1,6 @@
 import { Movement } from './Movement.js';
 
-export class Withdrawal extends Movement {
+export class Chargeback extends Movement {
   constructor(data) {
     super(data);
   }
@@ -10,14 +10,14 @@ export class Withdrawal extends Movement {
   }
 
   getColor() {
-    return '#ef4444';
+    return '#ec4899';
   }
 
   getIcon() {
-    return '↑';
+    return '↩️';
   }
 
   getTypeName() {
-    return 'Retiro';
+    return 'Contracargo';
   }
 }
